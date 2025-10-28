@@ -84,3 +84,17 @@ fs.watchFile(__mainPath, () => {
     "Detected change in main.js — new logic will be used on next message"
   );
 });
+
+const libFolder = path.join(__dirname, "./src/lib");
+fs.watch(libFolder, (eventType, filename) => {
+  if (filename) {
+    console.log(`Detected change in ${filename} — will reload commands`);
+  }
+});
+
+const commandsFolder = path.join(__dirname, "./src/commands");
+fs.watch(commandsFolder, (eventType, filename) => {
+  if (filename) {
+    console.log(`Detected change in ${filename} — will reload commands`);
+  }
+});

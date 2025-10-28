@@ -25,6 +25,7 @@ export async function loadCommands(dir) {
     commandList.push({
       name: cmd.name,
       aliases: cmd.aliases || [],
+      ownerOnly: cmd.ownerOnly || false,
       description: cmd.description || "Unknown Description",
     });
 

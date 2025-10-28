@@ -5,6 +5,7 @@ import { Log } from "../lib/utils.js";
 export default {
   name: "sticker",
   aliases: ["stiker", "s"],
+  ownerOnly: false,
   description: "Create a sticker from an image.",
 
   run: async ({ hmdfz, msg, sender, pushName }) => {

@@ -1,3 +1,5 @@
+import config from "../db/config.json" with { type: 'json' };
+
 export default {
   name: "menu",
   aliases: ["commands"],
@@ -13,10 +15,25 @@ export default {
       return;
     }
 
-    let text = "*MRHMDFZ BOT*\n\n";
-    for (const cmd of commandList) {
-      const alias = cmd.aliases.length ? ` (${cmd.aliases.join(", ")})` : "";
-      text += `• .${cmd.name}${alias}\n  ${cmd.description}\n\n`;
+    let text = `*${config.botName}*\n\n`;
+
+    const commandListArray = Array.from(commandList.values());
+    const ownerCommands = commandListArray.filter(cmd => cmd.ownerOnly);
+    const userCommands = commandListArray.filter(cmd => !cmd.ownerOnly);
+
+    if (userCommands.length) {
+      text += "*Public:*\n";
+      for (const cmd of userCommands) {
+        text += `• ${config.prefix}${cmd.name} (${cmd.aliases})\n`;
+      }
+    }
+
+    if (ownerCommands.length) {
+      text += "*Owner:*\n";
+      for (const cmd of ownerCommands) {
+        text += `• ${config.prefix}${cmd.name} (${cmd.aliases})\n`;
+      }
+      text += "\n";
     }
 
     text += "Type .help <command> for detail.";

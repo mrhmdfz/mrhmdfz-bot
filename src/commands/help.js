@@ -1,6 +1,7 @@
 export default {
   name: "help",
   aliases: ["h", "info"],
+  ownerOnly: false,
   description: "Show help for a specific command.",
   async run({ hmdfz, msg, sender, commandList, args, prefix = "." }) {
     if (!args?.length) {
@@ -11,7 +12,6 @@ export default {
 
     const name = args[0].toLowerCase();
 
-    // cari command di array commandList, termasuk alias
     const cmd = commandList.find(
       (c) => c.name === name || (c.aliases && c.aliases.includes(name))
     );

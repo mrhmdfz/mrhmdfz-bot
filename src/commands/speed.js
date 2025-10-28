@@ -1,6 +1,7 @@
 export default {
   name: "speed",
   aliases: ["ping"],
+  ownerOnly: false,
   description: "Check the bot's response speed.",
 
   run: async ({ hmdfz, msg, sender }) => {

@@ -11,10 +11,16 @@ export default {
    * - command: nama command yang diketik user
    */
   run: async ({ hmdfz, msg, sender, pushName, command }) => {
+    if (!args?.length) {
+      const text = `Hello ${pushName}!\nthis is example command template.`;
+      await hmdfz.sendMessage(sender, { text }, { quoted: msg });
+      return;
+    }
+    const text = args[0];
     await hmdfz.sendMessage(
       sender,
       {
-        text: `Halo ${pushName}!\nIni contoh command *${command}*.`,
+        text: `Halo ${pushName}!\nIni *${text}*.`,
       },
       { quoted: msg }
     );
