@@ -3,7 +3,7 @@ import config from "../db/config.json" with { type: "json" };
 
 export default {
   name: "afk",
-  aliases: ["afkmode"],
+  aliases: ["a"],
   ownerOnly: true,
   description: "Switch AFK mode",
   run: async ({ hmdfz, args, msg, sender }) => {
